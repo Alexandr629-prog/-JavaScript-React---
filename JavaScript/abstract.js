@@ -33,7 +33,7 @@ var Name = 'Ivan';
 
 //!!!!УРОК6(Классификация типов данных в JavaScript)!!!!
 //Тип число:
-let num = 4.6;
+//let num = 4.6;
 //console.log(4/0);//infinity
 //console.log(-4/0);//-infinity
 //console.log('string' * 9);//NaN
@@ -143,7 +143,7 @@ const isChecked=true,
 //2) git следит за определенными файлами(файды в indexe); git add -A
 //3) git создал commit; git commit -a -m"название коммита"
 
-//!!УРОК10(КАК РАБОТТЬ С GITHUB  С РАЗНЫХ КОМПЬЮТЕРОВ, GITIGNORE И GIT KRAKEN)!!
+//!!УРОК11(КАК РАБОТТЬ С GITHUB  С РАЗНЫХ КОМПЬЮТЕРОВ, GITIGNORE И GIT KRAKEN)!!
 // git clone - клонирование репозизитория
 // git pull - загрузка актуальной версии реозитория на локальный компьютер
 // при разнице с версиями репозитория на локальном компьютере и на git hub необходимо использовать команду git pull
@@ -151,3 +151,39 @@ const isChecked=true,
 //git push загрузка на сервер
 // gitignore предназначем чтобы не заливать на удаленный сервер какие-то файлы. например node_modules
 // git kraken-программа для удобной работы с git репозиториями
+
+// !!УРОК 12(НАПИСАНИЕ КОДА)!!
+
+// !!!УРОК13(УСЛОВИЯ)!!!
+/*if(1){
+    console.log('ok');
+} else{
+    console.log('error');
+}
+
+
+if(Num<49){
+    console.log('error');
+} else if (Num>100){
+    console.log('Много');
+}else{
+    console.log('ok');
+}
+
+(Num===50) ? console.log('ok') : console.log('error');// единственный тернарный оператор в js, имеет 3 аргумента
+const Num = 50;
+switch(Num){
+    case 49: 
+       console.log('неверно');
+       break;
+    case 100:
+        console.log('неверно');
+       break;
+    case 51:
+        console.log('в точку!');
+        break;
+    default:
+        console.log('не в этот раз');         
+}
+*/
+
