@@ -205,15 +205,15 @@ switch(Num){
  }*/
 
  //!!!УРОК16(ФУНКЦИИ, СТРЕЛОЧНЫЕ ФУНКЦИИ)!!
-let num=20;
-function showFirstMessage(text){//function declaration
-    console.log(text);
-    let num=10;
-    console.log(num);
+// let num=20;
+// function showFirstMessage(text){//function declaration
+//     console.log(text);
+//     let num=10;
+//     console.log(num);
 
-}
-showFirstMessage('hello');//не забывай вызывать функции!!
-console.log(num);
+// }
+// showFirstMessage('hello');//не забывай вызывать функции!!
+// console.log(num);
 
 // console.log(calc(2, 5));
 // function calc(a, b){
@@ -221,21 +221,58 @@ console.log(num);
 // }
 
 
-function ret(){
-    let num =50;
-    //
+// function ret(){
+//     let num =50;
+//     //
 
-    return num;
-}
-const anotherName=ret();
-console.log(anotherName);
+//     return num;
+// }
+// const anotherName=ret();
+// console.log(anotherName);
 
-const logger = function(){//function expression, создается только тогда когда до нее доходит поток кода
+// const logger = function(){//function expression, создается только тогда когда до нее доходит поток кода
 
 
-    console.log("hello");
-};
-logger();//т.е. ее можно вызвать ТОЛЬКО после объявления
+//     console.log("hello");
+// };
+// logger();//т.е. ее можно вызвать ТОЛЬКО после объявления
 
-const calc = (a,b)=> a+b;// не имеет контекста вызова(THIS) ВАЖНРО!!
-console.log(calc(2,5));
+// const calc = (a,b)=> a+b;// не имеет контекста вызова(THIS) ВАЖНРО!!
+// console.log(calc(2,5));
+
+//!!УРОК 17(МЕТОДЫ И СВОЙСТВА СТРОК И ЧИСЕЛ)!!!
+//МЕТОДЫ -вспомогательный функции
+//СВОЙСТВА -ВСПОМОГАТЕЛЬНЫЕ ЗНАЧЕНИЯ
+const str = 'test';
+const array =[ 1, 2, 3];
+console.log(array.length);
+//строку на прямую изменить не можем!
+
+console.log(str.toUpperCase());//не меняет исходную строку
+console.log(str.toLowerCase);
+
+const fruit = 'Some fruit';
+console.log(fruit.indexOf("fruit"));//возвращает индекс первоно вхождения подстроки в строку если ее нет то -1
+
+//модификация строк!
+const logg ="hello world";
+console.log(logg[0]);
+console.log(logg.slice(6, 11));// начиная с 6 по 11 НЕ включая 11 символь, немерация начинается с 0!
+console.log(logg.slice(6));// начиная с 6 и до конца
+console.log(logg.slice(-5, -1));//worl
+
+console.log(logg.substring(6,11));//аналок slice
+
+console.log(logg.substr(6, 5));// начиная с 6 позиции 5 символов
+
+//ЧИСЛА
+const num = 12.2;
+console.log(Math.round(num));//округление обычное
+
+const test = "12.2px";
+console.log(parseInt(test));// остаетяс только целое число превращщенный в целый тип данных
+console.log(parseFloat(test));// остается только дробное число преобразованное к типу с плавающей точкой
+
+
+
+
