@@ -203,4 +203,39 @@ switch(Num){
      if(i===6) {continue;}//пропустит 6
      console.log(i);
  }*/
- 
+
+ //!!!УРОК16(ФУНКЦИИ, СТРЕЛОЧНЫЕ ФУНКЦИИ)!!
+let num=20;
+function showFirstMessage(text){//function declaration
+    console.log(text);
+    let num=10;
+    console.log(num);
+
+}
+showFirstMessage('hello');//не забывай вызывать функции!!
+console.log(num);
+
+// console.log(calc(2, 5));
+// function calc(a, b){
+//     return (a+b);
+// }
+
+
+function ret(){
+    let num =50;
+    //
+
+    return num;
+}
+const anotherName=ret();
+console.log(anotherName);
+
+const logger = function(){//function expression, создается только тогда когда до нее доходит поток кода
+
+
+    console.log("hello");
+};
+logger();//т.е. ее можно вызвать ТОЛЬКО после объявления
+
+const calc = (a,b)=> a+b;// не имеет контекста вызова(THIS) ВАЖНРО!!
+console.log(calc(2,5));
