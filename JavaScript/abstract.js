@@ -1,34 +1,34 @@
 //!!!УРОК5(ПЕРЕМЕННЫЕ И СТРОГИЙ РЕЖИМ)!!!
 "Use strict";//следует подключать в начале файла
-a = 15//в строгом режиме это ошибка
-//console.log(number); ошибка!! глобальное отличие let от var
-let number = 5;
-const leftBorderWidth = 5;
-// константы нельзя перезаписывать. Хорошим ттоном является использование констант везеде, где это возможно.
-const obj = {
-    a:50
-};
+// a = 15//в строгом режиме это ошибка
+// //console.log(number); ошибка!! глобальное отличие let от var
+// let number = 5;
+// const leftBorderWidth = 5;
+// // константы нельзя перезаписывать. Хорошим ттоном является использование констант везеде, где это возможно.
+// const obj = {
+//     a:50
+// };
 
-obj.a=10;
-//Т.Е. прямых констант в JavaScript не бывает
+// obj.a=10;
+// //Т.Е. прямых констант в JavaScript не бывает
 
-//console.log(Name);
-var Name = 'Ivan';
+// //console.log(Name);
+// var Name = 'Ivan';
 
-{
-    let result = 50;
-}
-//console.log(result);//ошибка!!
-{
-    var result2 = 50;
-}
-//console.log(result2);есть доступ к переменной!
-//есть еще одно отличие связанное с циклами(var от let)
+// {
+//     let result = 50;
+// }
+// //console.log(result);//ошибка!!
+// {
+//     var result2 = 50;
+// }
+// //console.log(result2);есть доступ к переменной!
+// //есть еще одно отличие связанное с циклами(var от let)
 
-//новый стандарт не поддерживается в старых браузерах
+// //новый стандарт не поддерживается в старых браузерах
 
-//alert(5);//точка с запятой обязательна!
-[].push('a');
+// //alert(5);//точка с запятой обязательна!
+// [].push('a');
 
 
 //!!!!УРОК6(Классификация типов данных в JavaScript)!!!!
@@ -240,65 +240,103 @@ switch(Num){
 // const calc = (a,b)=> a+b;// не имеет контекста вызова(THIS) ВАЖНРО!!
 // console.log(calc(2,5));
 
-//!!УРОК 17(МЕТОДЫ И СВОЙСТВА СТРОК И ЧИСЕЛ)!!!
-//МЕТОДЫ -вспомогательный функции
-//СВОЙСТВА -ВСПОМОГАТЕЛЬНЫЕ ЗНАЧЕНИЯ
-const str = 'test';
-const array =[ 1, 2, 3];
-console.log(array.length);
-//строку на прямую изменить не можем!
+// //!!УРОК 17(МЕТОДЫ И СВОЙСТВА СТРОК И ЧИСЕЛ)!!!
+// //МЕТОДЫ -вспомогательный функции
+// //СВОЙСТВА -ВСПОМОГАТЕЛЬНЫЕ ЗНАЧЕНИЯ
+// const str = 'test';
+// const array =[ 1, 2, 3];
+// console.log(array.length);
+// //строку на прямую изменить не можем!
 
-console.log(str.toUpperCase());//не меняет исходную строку
-console.log(str.toLowerCase);
+// console.log(str.toUpperCase());//не меняет исходную строку
+// console.log(str.toLowerCase);
 
-const fruit = 'Some fruit';
-console.log(fruit.indexOf("fruit"));//возвращает индекс первоно вхождения подстроки в строку если ее нет то -1
+// const fruit = 'Some fruit';
+// console.log(fruit.indexOf("fruit"));//возвращает индекс первоно вхождения подстроки в строку если ее нет то -1
 
-//модификация строк!
-const logg ="hello world";
-console.log(logg[0]);
-console.log(logg.slice(6, 11));// начиная с 6 по 11 НЕ включая 11 символь, немерация начинается с 0!
-console.log(logg.slice(6));// начиная с 6 и до конца
-console.log(logg.slice(-5, -1));//worl
+// //модификация строк!
+// const logg ="hello world";
+// console.log(logg[0]);
+// console.log(logg.slice(6, 11));// начиная с 6 по 11 НЕ включая 11 символь, немерация начинается с 0!
+// console.log(logg.slice(6));// начиная с 6 и до конца
+// console.log(logg.slice(-5, -1));//worl
 
-console.log(logg.substring(6,11));//аналок slice
+// console.log(logg.substring(6,11));//аналок slice
 
-console.log(logg.substr(6, 5));// начиная с 6 позиции 5 символов
+// console.log(logg.substr(6, 5));// начиная с 6 позиции 5 символов
 
-//ЧИСЛА
-const num = 12.2;
-console.log(Math.round(num));//округление обычное
+// //ЧИСЛА
+// const num = 12.2;
+// console.log(Math.round(num));//округление обычное
 
-const test = "12.2px";
-console.log(parseInt(test));// остаетяс только целое число превращщенный в целый тип данных
-console.log(parseFloat(test));// остается только дробное число преобразованное к типу с плавающей точкой
+// const test = "12.2px";
+// console.log(parseInt(test));// остаетяс только целое число превращщенный в целый тип данных
+// console.log(parseFloat(test));// остается только дробное число преобразованное к типу с плавающей точкой
 
-//УРРОК 19(CALBACK-ФУНКЦИИ)!!
-function first(){
-    // do something
-    setTimeout(function()
-    {
-        console.log(1);
-    }, 500);
+// //УРРОК 19(CALBACK-ФУНКЦИИ)!!
+// function first(){
+//     // do something
+//     setTimeout(function()
+//     {
+//         console.log(1);
+//     }, 500);
     
-}
-function second(){
-    console.log(2);
+// }
+// function second(){
+//     console.log(2);
+// }
+
+// first();
+// second();
+// //Если в коде функции идут одна за другой это не значит, что они выполняются так же!
+// //callback-это функция которая должна быть выполнена после того как другая функция завершила свое выполнение
+
+// function learnJS(lang, callback){
+//     console.log(`Я учу: ${lang}`);
+//     callback();
+// }
+// function done(){
+//     console.log('Я прошел этот урок');
+// }
+
+// learnJS('JavaScript', done);// не ставим скобки после done потму что мы ее не вызываем а передаем!
+// // callback позволяют нам быть уверенными что определенный код не будет исполнение,
+// // пока другой код не закончит свое выполнение
+
+//!!УРОК 20(ОБЪЕКТЫ, ДЕСТРУКТИЗАЦИЯ ОБЪЕКТОВ)!!
+const options = {
+    name: 'test',
+    width: 1024,
+    height: 1024,
+    colors: {
+        border: 'black',
+        bg: 'red'
+    },
+    makeTeat: function(){
+        console.log('Test');
+    }
+};
+
+options.makeTeat();
+const {border, bg} = options.colors;//дестурктиризация объекта!(ES6)
+console.log(border);
+//console.log(options['colors']['border']);//black
+console.log(options);
+
+let counter=0;
+for(let key in options){//цикл будет работат столько раз, сколько свойств есть у объекта
+    if(typeof(options[key])==='object'){
+        for(let i in options[key]){
+            console.log(`свойство ${i} имеет значение ${options[key][i]}`);
+            counter++;
+        }
+    }else{
+        console.log(`свойство ${key} имеет значение ${options[key]}`);
+        counter++;
+    }
 }
 
-first();
-second();
-//Если в коде функции идут одна за другой это не значит, что они выполняются так же!
-//callback-это функция которая должна быть выполнена после того как другая функция завершила свое выполнение
+console.log(Object.keys(options).length);
 
-function learnJS(lang, callback){
-    console.log(`Я учу: ${lang}`);
-    callback();
-}
-function done(){
-    console.log('Я прошел этот урок');
-}
 
-learnJS('JavaScript', done);// не ставим скобки после done потму что мы ее не вызываем а передаем!
-// callback позволяют нам быть уверенными что определенный код не будет исполнение,
-// пока другой код не закончит свое выполнение
+
