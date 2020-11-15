@@ -304,39 +304,70 @@ switch(Num){
 // // пока другой код не закончит свое выполнение
 
 //!!УРОК 20(ОБЪЕКТЫ, ДЕСТРУКТИЗАЦИЯ ОБЪЕКТОВ)!!
-const options = {
-    name: 'test',
-    width: 1024,
-    height: 1024,
-    colors: {
-        border: 'black',
-        bg: 'red'
-    },
-    makeTeat: function(){
-        console.log('Test');
-    }
-};
+// const options = {
+//     name: 'test',
+//     width: 1024,
+//     height: 1024,
+//     colors: {
+//         border: 'black',
+//         bg: 'red'
+//     },
+//     makeTeat: function(){
+//         console.log('Test');
+//     }
+// };
 
-options.makeTeat();
-const {border, bg} = options.colors;//дестурктиризация объекта!(ES6)
-console.log(border);
-//console.log(options['colors']['border']);//black
-console.log(options);
+// options.makeTeat();
+// const {border, bg} = options.colors;//дестурктиризация объекта!(ES6)
+// console.log(border);
+// //console.log(options['colors']['border']);//black
+// console.log(options);
 
-let counter=0;
-for(let key in options){//цикл будет работат столько раз, сколько свойств есть у объекта
-    if(typeof(options[key])==='object'){
-        for(let i in options[key]){
-            console.log(`свойство ${i} имеет значение ${options[key][i]}`);
-            counter++;
-        }
-    }else{
-        console.log(`свойство ${key} имеет значение ${options[key]}`);
-        counter++;
-    }
-}
+// let counter=0;
+// for(let key in options){//цикл будет работат столько раз, сколько свойств есть у объекта
+//     if(typeof(options[key])==='object'){
+//         for(let i in options[key]){
+//             console.log(`свойство ${i} имеет значение ${options[key][i]}`);
+//             counter++;
+//         }
+//     }else{
+//         console.log(`свойство ${key} имеет значение ${options[key]}`);
+//         counter++;
+//     }
+// }
 
-console.log(Object.keys(options).length);
+// console.log(Object.keys(options).length);
 
+//!!УРОК 21(МАССИВЫ И ПСЕВДОМАССИВЫ)!!
+// //ПСЕВДОМАССИВЫ -выглялят как массивы, НО не имеют НИКАКИХ МЕТОДОВБ т.е. это просто структура, хранящая данные попроядку
+// const array = [2, 13, 26, 8, 10];
+// array.sort(compareNum);
+// console.log(array);
+// function compareNum(a,b){
+//     return a-b;
+// }
+
+// //array.pop();//удаляет последний элемент массива
+// // array.push(10);//добавляет элемент в конец массива
+// // array[99]=0;
+// // console.log(array);
+// // console.log(array.length);//100, потому что длинна массива это ИНДЕКС ПОСЛЕДНЕГО ЭЛЕМЕНТА +!
+
+// array.forEach(function(item, i, arr){
+//    console.log(`${i}: ${item} внутри массива ${arr}`);
+// });
+
+// for(let i=0; i<array.length; i++){
+//     console.log(array[i]);
+// }
+
+// for(let value of array){//метод перебора массива в нем можем использоввать break and continue в отличии от foreach
+//     console.log(value);
+// }
+
+// const str=prompt('', '');
+// const products=str.split(', ');//формирование массива на основание строк, учитываяя разделитель
+// products.sort();// сортирует  массив из СТРОК
+// console.log(products.join('; '));//преобразует массив в строку разделив через ;
 
 
