@@ -319,7 +319,7 @@ switch(Num){
 
 // options.makeTeat();
 // const {border, bg} = options.colors;//дестурктиризация объекта!(ES6)
-// console.log(border);
+// console.log(border)// black;
 // //console.log(options['colors']['border']);//black
 // console.log(options);
 
@@ -339,7 +339,7 @@ switch(Num){
 // console.log(Object.keys(options).length);
 
 //!!УРОК 21(МАССИВЫ И ПСЕВДОМАССИВЫ)!!
-// //ПСЕВДОМАССИВЫ -выглялят как массивы, НО не имеют НИКАКИХ МЕТОДОВБ т.е. это просто структура, хранящая данные попроядку
+//ПСЕВДОМАССИВЫ -выглялят как массивы, НО не имеют НИКАКИХ МЕТОДОВ т.е. это просто структура, хранящая данные попроядку
 // const array = [2, 13, 26, 8, 10];
 // array.sort(compareNum);
 // console.log(array);
@@ -369,5 +369,96 @@ switch(Num){
 // const products=str.split(', ');//формирование массива на основание строк, учитываяя разделитель
 // products.sort();// сортирует  массив из СТРОК
 // console.log(products.join('; '));//преобразует массив в строку разделив через ;
+
+//УРОК22(ПЕРЕДАЧА ПО ССЫЛКЕ И ПО ЗНАЧЕНИЮ)!!
+let a = 5,
+    b = a;//значение
+b=b+5;
+
+const obj ={
+    a: 5,
+    B:1
+};
+// const copy =obj;//ссылка
+// copy.a=10;//модифицируем начальный оюъект
+// console.log(copy);
+// console.log(obj);
+
+//примитивы передаются по значению, объекты по ССЫЛКЕ!!!
+
+function copy(mainObj){
+let objCopy={};
+
+let key;
+for (key in mainObj){
+    objCopy[key]=mainObj[key];
+}
+return objCopy;
+}
+
+const numbers={
+    a: 2,
+    b: 5,
+    c:{
+        x: 7,
+        y: 4
+    }
+};
+
+const newNumbers=copy(numbers);// поверхностная копия
+ newNumbers.a = 10;
+ newNumbers.c.x=2;// это свойство изменится у двух объектов
+
+ console.log(newNumbers);
+ console.log(numbers);
+
+ const add ={
+     d: 17,
+     e: 20
+ };
+
+ const clone = Object.assign({}, add);// поверхностная копия предыдущего объекта
+
+ clone.d=20;
+ console.log(add);
+ console.log(clone);
+
+ const oldArray = ['a', 'b', 'c'];
+ const newArray = oldArray.slice();//поверхностная копия oldArray
+
+ newArray[1] = 'dsfdsf';
+ console.log(newArray);
+ console.log(oldArray);
+
+ const video=['youtube', 'vimeo', 'retube'],
+        blogs =['wordpress', 'livejournal', 'blogger'],
+        internet = [...video, ...blogs, 'vk', 'facebook'];
+
+console.log(internet);
+
+// оператор spread в ES для массивов, а в ES9 и для объектов
+//этоот оператор разворачивает структуру и достает из нее данные
+
+function log(a, b, c){
+    console.log(a);
+    console.log(b);
+    console.log(c);
+}
+
+const num =[2, 5, 7];
+
+log(...num);
+
+const array =['a', 'b'];
+const newAarray = [... array]; // 4 способ создания поверхностной копии
+
+const q={
+    ane: 1,
+    two: 2
+};
+const newObj ={...q};
+console.log(newObj);
+
+
 
 
