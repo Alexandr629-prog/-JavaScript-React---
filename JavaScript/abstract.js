@@ -371,94 +371,124 @@ switch(Num){
 // console.log(products.join('; '));//преобразует массив в строку разделив через ;
 
 //УРОК22(ПЕРЕДАЧА ПО ССЫЛКЕ И ПО ЗНАЧЕНИЮ)!!
-let a = 5,
-    b = a;//значение
-b=b+5;
+// let a = 5,
+//     b = a;//значение
+// b=b+5;
 
-const obj ={
-    a: 5,
-    B:1
-};
+// const obj ={
+//     a: 5,
+//     B:1
+// };
 // const copy =obj;//ссылка
 // copy.a=10;//модифицируем начальный оюъект
 // console.log(copy);
 // console.log(obj);
 
-//примитивы передаются по значению, объекты по ССЫЛКЕ!!!
+// //примитивы передаются по значению, объекты по ССЫЛКЕ!!!
 
-function copy(mainObj){
-let objCopy={};
+// function copy(mainObj){
+// let objCopy={};
 
-let key;
-for (key in mainObj){
-    objCopy[key]=mainObj[key];
-}
-return objCopy;
-}
+// let key;
+// for (key in mainObj){
+//     objCopy[key]=mainObj[key];
+// }
+// return objCopy;
+// }
 
-const numbers={
-    a: 2,
-    b: 5,
-    c:{
-        x: 7,
-        y: 4
-    }
-};
+// const numbers={
+//     a: 2,
+//     b: 5,
+//     c:{
+//         x: 7,
+//         y: 4
+//     }
+// };
 
-const newNumbers=copy(numbers);// поверхностная копия
- newNumbers.a = 10;
- newNumbers.c.x=2;// это свойство изменится у двух объектов
+// const newNumbers=copy(numbers);// поверхностная копия
+//  newNumbers.a = 10;
+//  newNumbers.c.x=2;// это свойство изменится у двух объектов
 
- console.log(newNumbers);
- console.log(numbers);
+//  console.log(newNumbers);
+//  console.log(numbers);
 
- const add ={
-     d: 17,
-     e: 20
- };
+//  const add ={
+//      d: 17,
+//      e: 20
+//  };
 
- const clone = Object.assign({}, add);// поверхностная копия предыдущего объекта
+//  const clone = Object.assign({}, add);// поверхностная копия предыдущего объекта
 
- clone.d=20;
- console.log(add);
- console.log(clone);
+//  clone.d=20;
+//  console.log(add);
+//  console.log(clone);
 
- const oldArray = ['a', 'b', 'c'];
- const newArray = oldArray.slice();//поверхностная копия oldArray
+//  const oldArray = ['a', 'b', 'c'];
+//  const newArray = oldArray.slice();//поверхностная копия oldArray
 
- newArray[1] = 'dsfdsf';
- console.log(newArray);
- console.log(oldArray);
+//  newArray[1] = 'dsfdsf';
+//  console.log(newArray);
+//  console.log(oldArray);
 
- const video=['youtube', 'vimeo', 'retube'],
-        blogs =['wordpress', 'livejournal', 'blogger'],
-        internet = [...video, ...blogs, 'vk', 'facebook'];
+//  const video=['youtube', 'vimeo', 'retube'],
+//         blogs =['wordpress', 'livejournal', 'blogger'],
+//         internet = [...video, ...blogs, 'vk', 'facebook'];
 
-console.log(internet);
+// console.log(internet);
 
-// оператор spread в ES для массивов, а в ES9 и для объектов
-//этоот оператор разворачивает структуру и достает из нее данные
+// // оператор spread в ES для массивов, а в ES9 и для объектов
+// //этоот оператор разворачивает структуру и достает из нее данные
 
-function log(a, b, c){
-    console.log(a);
-    console.log(b);
-    console.log(c);
-}
+// function log(a, b, c){
+//     console.log(a);
+//     console.log(b);
+//     console.log(c);
+// }
 
-const num =[2, 5, 7];
+// const num =[2, 5, 7];
 
-log(...num);
+// log(...num);
 
-const array =['a', 'b'];
-const newAarray = [... array]; // 4 способ создания поверхностной копии
+// const array =['a', 'b'];
+// const newAarray = [... array]; // 4 способ создания поверхностной копии
 
-const q={
-    ane: 1,
-    two: 2
-};
-const newObj ={...q};
-console.log(newObj);
+// const q={
+//     ane: 1,
+//     two: 2
+// };
+// const newObj ={...q};
+// console.log(newObj);
 
+//!! УРОК 23(основы ООП прототипно-ориентированное наследование)!!
+// let str ="some";
+// let strObj = new String(str);
 
+// console.log(typeof(str));//string
+// console.log(typeof(strObj));//object
+// //когда мы используем какой-то метод у строки стока сначала оборачивается оюъектом
+// //вызывается метод который есть у объекта а потом возвращается обратно в строку
 
+// console.dir([1, 2, 3]);
+
+// const solder = {
+//     health: 400,
+//     armor: 100,
+//     sayHello: function(){
+//         console.log('Hello');
+//     }
+// };
+
+// const jonh=Object.create(solder);//созание объекта который прототипно наследуется от другого объекта
+
+// // const jonh ={
+// //     health: 100,
+
+// // }
+
+// //jonh.__proto__= solder;// устаревший метод наследования у прототипа
+
+// //Object.setPrototypeOf(jonh, solder);// аналогично применению выше только новый стандарт
+// console.log(jonh.armor);//100
+
+// jonh.sayHello();//hello
 
