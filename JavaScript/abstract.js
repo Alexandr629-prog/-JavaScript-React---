@@ -479,7 +479,7 @@ switch(Num){
 // };
 
 // const jonh=Object.create(solder);//созание объекта который прототипно наследуется от другого объекта
-
+// jonh.armor=300;//armor: 300
 // // const jonh ={
 // //     health: 100,
 
