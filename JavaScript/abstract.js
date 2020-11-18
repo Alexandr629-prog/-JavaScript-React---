@@ -493,21 +493,69 @@ switch(Num){
 // jonh.sayHello();//hello
 
 //!!УРОК 25(ОТЛАВЛИВАЕМ ОШИБКИ В СВОЕМ КОДЕ ПРИПОМОЩИ КОНСОЛИ РАЗРАБОТЧИКА)!!
-function hello(){
-    console.log("hello wprld");
-}
-hello();
+// function hello(){
+//     console.log("hello wprld");
+// }
+// hello();
 
-function hi(){
-    console.log('Say hi');
-    debugger;
-}
-hi();
+// function hi(){
+//     console.log('Say hi');
+//     debugger;
+// }
+// hi();
 
-const ar = [1, 14, 4, 30, 54],
-        sorted =ar.sort(compareNum);
+// const ar = [1, 14, 4, 30, 54],
+//         sorted =ar.sort(compareNum);
 
-function compareNum(a, b){
-    return a-b;
-}
-console.log(sorted);
+// function compareNum(a, b){
+//     return a-b;
+// }
+// console.log(sorted);
+//!!УРОК 26(ДИНАМИЧЕСКАЯ ТИПИЗАЦИЯ В JS)
+
+// To String
+// данные полученные от пользователя всегда тип данных строка(интыпы, формы, промпт)!!
+//1)
+// console.log(typeof(String(null)));//string
+
+// //2)
+// console.log(typeof(5+''));//string
+
+// const num = 5;
+// console.log("https://vk.com/catalog/"+num);
+
+// const fontize =26+'px';
+
+// // to NUmber
+
+// //1)
+// console.log(typeof(Number('4')));
+
+// // 2)
+// console.log(typeof(+'5'));
+
+// // 3)
+// console.log(typeof(parseInt('15px', 10)));// 15
+
+
+// let ans =+prompt('hello', '');
+
+// // To boolen
+
+// //0, '', null, undefined, NaN;- false
+// //1)
+// let switcher = null;
+// if(!switcher){
+//     console.log("working..");
+// }
+// switcher =1;
+
+// if(!switcher){
+//     console.log("working..");
+// }
+
+// // 2)
+// console.log(typeof(Boolean('4')));
+
+// // 3)
+// console.log(typeof(!!'4444'));
