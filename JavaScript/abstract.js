@@ -559,3 +559,52 @@ switch(Num){
 
 // // 3)
 // console.log(typeof(!!'4444'));
+
+//  УРОК27(ЗАДАЧИ С СОБЕСЕДОВАНИЙ НА ПОНИМАНИЕ ОСНОВ)
+let x = 5; 
+alert( x++ );//5
+
+console.log([ ] + false - null + true);// NaN т.к. от строки пытаемся отнять строку
+console.log([]+false-4);//также NaN
+
+let y = 1;
+let z = y = 2;
+alert(z);// 2
+alert(y);//2
+
+console.log([ ] + 1 + 2);//12
+
+alert("1"[0]);// обращение к нулевому элементу строки
+alert("1"[1]);//undefined
+
+console.log(2 && 1 && undefined && 0 && null); //undefined
+console.log(2 || 1);//2
+console.log(0 && 1);//0
+console.log(2 && 3);//последний символ
+console.log(false || 0);//последний символ
+
+console.log(2 && 1 && null && 0 && undefined);// null
+// оператор && всегда запинается на лжи
+// оператор || всегда запинается на правде
+
+
+console.log(!!( 1 && 2 ));// true
+console.log( 1 && 2); // 2
+                  3
+alert( null || 2 && 3 || 4 ); //3, сначала выполняется оператор && так как его приоритет выше
+
+const a = [1, 2, 3];
+const b = [1, 2, 3];
+console.log(a===b);//fslse
+console.log(a==b); //false
+
+alert( +"Infinity" );// infinity (тип данных число)
+
+console.log("Ёжик" > "Яблока");//false, смотреть таблицу юникода символов
+
+console.log(0 || "" || 2 || undefined || true || false );//2
+
+
+
+
+
