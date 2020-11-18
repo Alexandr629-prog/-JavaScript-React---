@@ -492,3 +492,22 @@ switch(Num){
 
 // jonh.sayHello();//hello
 
+//!!УРОК 25(ОТЛАВЛИВАЕМ ОШИБКИ В СВОЕМ КОДЕ ПРИПОМОЩИ КОНСОЛИ РАЗРАБОТЧИКА)!!
+function hello(){
+    console.log("hello wprld");
+}
+hello();
+
+function hi(){
+    console.log('Say hi');
+    debugger;
+}
+hi();
+
+const ar = [1, 14, 4, 30, 54],
+        sorted =ar.sort(compareNum);
+
+function compareNum(a, b){
+    return a-b;
+}
+console.log(sorted);
