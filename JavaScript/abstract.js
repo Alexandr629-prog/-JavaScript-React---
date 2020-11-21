@@ -72,8 +72,8 @@ let arr=['plum.png', 'orange.jpg', 'apple.bmp', 6, {}, []];
 //!! УРОК7(ПРОСТОЕ ОБЩЕНИЕ С ПОЛЬЗОВАТЕЛЕМ)!!
 //alert('hello');предупреждение о чем-то важном. Окошко нельзя стилировать
 
-//const result = confirm("are you here?");
-//console.log(result);// true or false в зависимости от ответа пользователя
+// const result = confirm("are you here?");
+// console.log(result);// true or false в зависимости от ответа пользователя
 
 //const answer = + prompt("Вам есть 18","");//тип данных строкаб если есть + будет число
 //console.log(typeof(answer));
@@ -300,7 +300,7 @@ switch(Num){
 // }
 
 // learnJS('JavaScript', done);// не ставим скобки после done потму что мы ее не вызываем а передаем!
-// // callback позволяют нам быть уверенными что определенный код не будет исполнение,
+// // callback позволяют нам быть уверенными что определенный код не будет исполнен,
 // // пока другой код не закончит свое выполнение
 
 //!!УРОК 20(ОБЪЕКТЫ, ДЕСТРУКТИЗАЦИЯ ОБЪЕКТОВ)!!
@@ -374,6 +374,8 @@ switch(Num){
 // let a = 5,
 //     b = a;//значение
 // b=b+5;
+// console.log(a);//5
+// console.log(b);//10
 
 // const obj ={
 //     a: 5,
@@ -465,7 +467,7 @@ switch(Num){
 
 // console.log(typeof(str));//string
 // console.log(typeof(strObj));//object
-// //когда мы используем какой-то метод у строки стока сначала оборачивается оюъектом
+// //когда мы используем какой-то метод у строки стpока сначала оборачивается оюъектом
 // //вызывается метод который есть у объекта а потом возвращается обратно в строку
 
 // console.dir([1, 2, 3]);
@@ -478,17 +480,16 @@ switch(Num){
 //     }
 // };
 
-// const jonh=Object.create(solder);//созание объекта который прототипно наследуется от другого объекта
-// jonh.armor=300;//armor: 300
-// // const jonh ={
-// //     health: 100,
+// // const jonh=Object.create(solder);//созание объекта который прототипно наследуется от другого объекта
+// // jonh.armor=300;//armor: 300
+// const jonh ={
+//     health: 100
+// };
 
-// // }
+// // //jonh.__proto__= solder;// устаревший метод наследования у прототипа
 
-// //jonh.__proto__= solder;// устаревший метод наследования у прототипа
-
-// //Object.setPrototypeOf(jonh, solder);// аналогично применению выше только новый стандарт
-// console.log(jonh.armor);//100
+// Object.setPrototypeOf(jonh, solder);// аналогично применению выше только новый стандарт
+// console.log(jonh.health);//100
 
 // jonh.sayHello();//hello
 
@@ -561,50 +562,53 @@ switch(Num){
 // console.log(typeof(!!'4444'));
 
 //  УРОК27(ЗАДАЧИ С СОБЕСЕДОВАНИЙ НА ПОНИМАНИЕ ОСНОВ)
-let x = 5; 
-alert( x++ );//5
+// let x = 5; 
+// alert( x++ );//5
 
-console.log([ ] + false - null + true);// NaN т.к. от строки пытаемся отнять строку
-console.log([]+false-4);//также NaN
+// console.log([ ] + false - null + true);// NaN т.к. от строки пытаемся отнять строку
+// console.log([]+false-4);//также NaN
 
-let y = 1;
-let z = y = 2;
-alert(z);// 2
-alert(y);//2
+// let y = 1;
+// let z = y = 2;
+// alert(z);// 2
+// alert(y);//2
 
-console.log([ ] + 1 + 2);//12
+ 
+// console.log([ ] + 1 + 2);//12
 
-alert("1"[0]);// обращение к нулевому элементу строки
-alert("1"[1]);//undefined
+// alert("1"[0]);// обращение к нулевому элементу строки
+// alert("1"[1]);//undefined
 
-console.log(2 && 1 && undefined && 0 && null); //undefined
-console.log(2 || 1);//2
-console.log(0 && 1);//0
-console.log(2 && 3);//последний символ
-console.log(false || 0);//последний символ
+// console.log(2 && 1 && undefined && 0 && null); //undefined
+// console.log(2 || 1);//2
+// console.log(0 && 1);//0
+// console.log(2 && 3);//последний символ
+// console.log(false || 0);//последний символ
 
-console.log(2 && 1 && null && 0 && undefined);// null
-// оператор && всегда запинается на лжи
-// оператор || всегда запинается на правде
-
-
-console.log(!!( 1 && 2 ));// true
-console.log( 1 && 2); // 2
-                  3
-alert( null || 2 && 3 || 4 ); //3, сначала выполняется оператор && так как его приоритет выше
-
-const a = [1, 2, 3];
-const b = [1, 2, 3];
-console.log(a===b);//fslse
-console.log(a==b); //false
-
-alert( +"Infinity" );// infinity (тип данных число)
-
-console.log("Ёжик" > "Яблока");//false, смотреть таблицу юникода символов
-
-console.log(0 || "" || 2 || undefined || true || false );//2
+// console.log(2 && 1 && null && 0 && undefined);// null
+// // оператор && всегда запинается на лжи
+// // оператор || всегда запинается на правде
 
 
+// console.log(!!( 1 && 2 ));// true
+// console.log( 1 && 2); // 2
+//                   3
+// alert( null || 2 && 3 || 4 ); //3, сначала выполняется оператор && так как его приоритет выше
+
+// const a = [1, 2, 3];
+// const b = [1, 2, 3];
+// console.log(a===b);//fslse
+// console.log(a==b); //false
+
+// alert( +"Infinity" );// infinity (тип данных число)
+
+// console.log("Ёжик" > "Яблока");//false, смотреть таблицу юникода символов
+
+// console.log(0 || "" || 2 || undefined || true || false );//2
+
+
+//УРОК 28(Получение элементов со страницы)
+//DOM-объектоная модель документа
 
 
 
