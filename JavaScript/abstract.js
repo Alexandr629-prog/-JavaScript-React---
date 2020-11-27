@@ -361,7 +361,8 @@ switch(Num){
 //     console.log(array[i]);
 // }
 
-// for(let value of array){//метод перебора массива в нем можем использоввать break and continue в отличии от foreach
+// for(let value of array){//метод перебора массивов и псевдомассивов
+// в нем можем использоввать break and continue в отличии от foreach
 //     console.log(value);
 // }
 
