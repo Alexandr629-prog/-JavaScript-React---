@@ -55,6 +55,3 @@ movieList.innerHTML +=`
       
 //  });
 
-
-
-

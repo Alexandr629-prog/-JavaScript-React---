@@ -455,8 +455,12 @@ switch(Num){
 // const newAarray = [... array]; // 4 способ создания поверхностной копии
 
 // const q={
-//     ane: 1,
-//     two: 2
+//     one: 1,
+//     two: 2,
+//     number: {
+//     1: 1,
+//     2: 2
+//     }
 // };
 // const newObj ={...q};
 // console.log(newObj);
