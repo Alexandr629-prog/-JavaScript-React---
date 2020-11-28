@@ -28,8 +28,8 @@ console.log(e.type);
 // });
 
 //btn.addEventListener('click', deleteElement);
-//overlay.addEventListener('click', deleteElement);//всплытие событий- событие сначала срабатывает на вложенном элементе, 
-//и после поднимается по иерархии вверх
+//overlay.addEventListener('click', deleteElement);//всплытие событий-
+//событие сначала срабатывает на вложенном элементе, и после поднимается по иерархии вверх 
 
 const link = document.querySelector('a');
 
