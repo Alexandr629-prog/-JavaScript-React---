@@ -37,8 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {//script начнет по�
         addInput = addForm.querySelector('.adding__input'),// input
         checkbox = addForm.querySelector('[type="checkbox"]');//checkbox
 
-        console.log(movieList);
-
     addForm.addEventListener('submit', (event) => {
         event.preventDefault();
 
@@ -61,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {//script начнет по�
             createMovieList(movieDB.movies, movieList);
         }
 
-        event.target.reset();
+        event.target.reset();//очищаем input
 
     });
 
@@ -108,3 +106,25 @@ document.addEventListener('DOMContentLoaded', () => {//script начнет по�
     createMovieList(movieDB.movies, movieList);
 
 });
+
+// window.addEventListener('DOMContentLoaded', () =>{
+//     const bag =document.querySelector('.header__search form input');
+
+//     bag.addEventListener('touchstart', (e) =>{
+//     e.preventDefault();
+//     console.log('start');
+//     console.log(e.touches);
+//     });
+
+//     bag.addEventListener('touchmove', (e) =>{
+//         e.preventDefault();
+//         console.log(e.targetTouches[0].pageX);
+//         });
+
+//     bag.addEventListener('touchend', (e) =>{
+//         e.preventDefault();
+//         console.log('end');
+//         });    
+    
+// });
+
