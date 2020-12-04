@@ -50,9 +50,9 @@ const box = document.getElementById('box'),
 // document.body.append(div);// современный элемент добавляет в конец родителя наш div
 
 
-//wrapper.prepend(div);
+//wrapper.prepend(div);// в начало родителя
 
-// hearts[0].before(div);// перед первым сердечком
+// hearts[0].before(div);// перед первывм сердечком
 //hearts[0].after(div);// после первого сердечка
 
 // circles[0].remove();// удаление первого кружка

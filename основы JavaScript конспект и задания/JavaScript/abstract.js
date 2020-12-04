@@ -530,7 +530,7 @@ switch(Num){
 // const num = 5;
 // console.log("https://vk.com/catalog/"+num);
 
-// const fontize =26+'px';
+//const fontize =26+'px';
 
 // // to NUmber
 
@@ -615,8 +615,9 @@ switch(Num){
 //УРОК 28(Получение элементов со страницы)
 //DOM-объектоная модель документа
 
+//!УРОК 29(ДЕЙСТВИЯ С ЭЛЕМЕНТАМИ НФ СТРАНИЦЕ)!!
 
-//УРОК28(сОБЫТИЯ И ИХ ОБРАБОТЧИКИ) ВАЖНЫЙ!!
+//УРОК31(сОБЫТИЯ И ИХ ОБРАБОТЧИКИ) ВАЖНЫЙ!!
 
 
 //УРОК 34(СОБЫТИЯ НА МОБИЛЬНЫХ УСТРОЙСТВАХ)!!
@@ -661,11 +662,11 @@ document.body.append(script);//скрипт начнет выпооняться 
 
 function loadScript(src){
 const script =document.createElement('p');
-script.src=src;
-script.src=false;
+script.src = src;
+script.async = false;
 document.body.append(script);
 }
 
 loadScript('js/test.js');
 loadScript('js/some.js');
-//тперь скрипты выполняются СТРОГО друг за другом
+//тперь скрипты выполняются СТРОГО друг за другом, так как async установлен в false

@@ -1,3 +1,4 @@
+
 window.addEventListener('DOMContentLoaded', ()=>{
 const tabs=document.querySelectorAll('.tabheader__item'),
       tabsContent = document.querySelectorAll('.tabcontent'),
@@ -10,7 +11,7 @@ const tabs=document.querySelectorAll('.tabheader__item'),
           });
 
           tabs.forEach(item =>{
-              item.classList.remove('tabheader__item_active');//удаляем выделение втда меню
+              item.classList.remove('tabheader__item_active');//удаляем выделение вида меню
           });
         }
           function showTabContent(i = 0){// если функция вызывается без аргумента, то автоматически подставится 0
