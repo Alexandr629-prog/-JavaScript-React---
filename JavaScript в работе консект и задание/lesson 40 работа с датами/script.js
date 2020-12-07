@@ -1,6 +1,5 @@
-const now = new Date(); //текущая дата без аргуметов       
-const n =Date.parse('2020-12-05'); // метода получения даты из строки, можно и без него      
-console.log(n);
+const now = new Date(), //текущая дата без аргуметов       
+      n =Date.parse('2020-12-05'); // метода получения даты из строки, можно и без него      
 // console.log(now.getFullYear());
 // console.log(now.getMonth());
 // console.log(now.getDate());
@@ -13,12 +12,11 @@ console.log(n);
 //console.log(now.getTime());
 
 
-console.log(now.setHours(40));//результат смотреть в консоли браузера
-console.log(now);
+//console.log(now.setHours(40));//результат смотреть в консоли браузера
+
 
 
 let start = new Date();
-
 for(let i=0; i<100000; i++){
        let some = i ** 3;//возведение в степень
 }
@@ -27,4 +25,4 @@ let end = new Date();
 
 alert(`Цикл отраьотал за ${end - start}милисекунд`);
 
-console.log(2 ** 3);//
+
