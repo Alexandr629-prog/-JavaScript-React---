@@ -54,3 +54,4 @@ const btn =document.createElement('button');
 btn.classList.add('blue');
 wrapper.append(btn);//помещааем кнопу в конец wrapper и на ней назначено делегирование!!!
 
+
