@@ -86,6 +86,10 @@ const tabs=document.querySelectorAll('.tabheader__item'),
 
                     if(t.total<=0){
                       clearInterval(timeInterval);
+                      days.innerHTML = 0;
+                      hours.innerHTML = 0;
+                      minutes.innerHTML = 0;
+                      seconds.innerHTML = 0;
                     }
 
                   }
@@ -98,22 +102,24 @@ const tabs=document.querySelectorAll('.tabheader__item'),
                 modal =document.querySelector('.modal'),
                 modalCloseBtn = document.querySelector('[data-close');
 
-                console.log(modalCloseBtn);
-
-          modalTrigger.forEach(item =>{
-            item.addEventListener('click', () =>{
-              modal.classList.toggle('show');
+          function openModal(){
+            modal.classList.toggle('show');
               // modal.classList.add('show');
               // modal.classList.remove('hide');
               document.body.style.overflow = 'hidden';
-            });
-          });
+              clearInterval(modalTimerId); // если сам открыл, то нужно сбросить таймер
+          }
           function closeModal(){
             modal.classList.toggle('show');
             // modal.classList.add('hide');
             // modal.classList.remove('show');
             document.body.style.overflow = '';
           }
+
+          modalTrigger.forEach(item =>{
+            item.addEventListener('click', openModal);
+          });   
+           
           modalCloseBtn.addEventListener('click', closeModal);
             
 
@@ -130,6 +136,20 @@ const tabs=document.querySelectorAll('.tabheader__item'),
           });
 
 
+          const modalTimerId = setTimeout(openModal, 5000); 
+
+          function showModalbyscroll(){
+            // сколько сверху отлистал пользователь + высота последнего экрана>=
+            // высоте прокрутки всегоо сайта
+            if(window.pageYOffset+document.documentElement.clientHeight+1 >= document.documentElement.scrollHeight){
+              openModal();
+              window.removeEventListener('scroll', showModalbyscroll);
+             }
+          }
+
+          window.addEventListener('scroll', showModalbyscroll);
+              
+          
 });
 
 
