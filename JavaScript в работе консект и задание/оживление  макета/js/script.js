@@ -135,6 +135,8 @@ const tabs=document.querySelectorAll('.tabheader__item'),
             }
           });
 
+          
+          // modification modal
 
           const modalTimerId = setTimeout(openModal, 5000); 
 
