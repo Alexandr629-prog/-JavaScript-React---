@@ -5,6 +5,8 @@ const tabs=document.querySelectorAll('.tabheader__item'),
       tabsContent = document.querySelectorAll('.tabcontent'),
       tabsParent = document.querySelector('.tabheader__items');
 
+      console.log(tabsContent);
+
       function hideTabContent(){
           tabsContent.forEach(item =>{
           item.classList.add('hide');// скрываем блоки на сайте
@@ -40,7 +42,7 @@ const tabs=document.querySelectorAll('.tabheader__item'),
 
           // Timer
 
-          const deadLine = '2020-12-11';//input возвращает страку такого же плана
+          const deadLine = '2020-12-15';//input возвращает страку такого же плана
 
           function getTimeRemaining (endtime){
             const t = Date.parse(endtime) - Date.parse(new Date()),
@@ -106,14 +108,14 @@ const tabs=document.querySelectorAll('.tabheader__item'),
             modal.classList.toggle('show');
               // modal.classList.add('show');
               // modal.classList.remove('hide');
-              document.body.style.overflow = 'hidden';
+              document.body.style.overflow = 'hidden';//страницу нельзя будет скрроллить
               clearInterval(modalTimerId); // если сам открыл, то нужно сбросить таймер
           }
           function closeModal(){
             modal.classList.toggle('show');
             // modal.classList.add('hide');
             // modal.classList.remove('show');
-            document.body.style.overflow = '';
+            document.body.style.overflow = ''; // браузер сам разберется)
           }
 
           modalTrigger.forEach(item =>{
@@ -148,10 +150,7 @@ const tabs=document.querySelectorAll('.tabheader__item'),
               window.removeEventListener('scroll', showModalbyscroll);
              }
           }
-
           window.addEventListener('scroll', showModalbyscroll);
-              
-          
 });
 
 
