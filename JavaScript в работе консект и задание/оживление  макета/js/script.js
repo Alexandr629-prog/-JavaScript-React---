@@ -5,7 +5,7 @@ const tabs=document.querySelectorAll('.tabheader__item'),
       tabsContent = document.querySelectorAll('.tabcontent'),
       tabsParent = document.querySelector('.tabheader__items');
 
-      console.log(tabsContent);
+     
 
       function hideTabContent(){
           tabsContent.forEach(item =>{
@@ -155,24 +155,33 @@ const tabs=document.querySelectorAll('.tabheader__item'),
           //Используем классы для карточек
 
           class MenuCard{
-            constructor(src, alt, title, descr, price, parentSelector){
+            constructor(src, alt, title, descr, price, parentSelector, ...classes){
               this.src = src;
               this.alt = alt;
               this.title = title;
               this.descr = descr;
               this.price = price;
-              this.parentSelector = parent.document.querySelector(parentSelector);
+              this.classes = classes; //массив
+              this.parent = document.querySelector(parentSelector);
               this.transfer = 27;
               this.chahgeToUAN();
             }
 
             chahgeToUAN(){
-              this.price = this.price* this.transfer;
+              this.price = this.price * this.transfer;
             }
 
             render(){
               const element = document.createElement('div');
-              element.innerHTML = `<div class="menu__item">
+              if(this.classes.length === 0 || this.classes[0]!='menu__item'){ /* провепряем длинну массива, ибо даже если мы ничего не передали вернется пустой массив */
+                this.element = 'menu__item';
+                element.classList.add(this.element);
+              }
+
+              this.classes.forEach(className => element.classList.add(className));
+              
+              element.innerHTML = 
+              `
               <img src=${this.src} alt=${this.alt}>
               <h3 class="menu__item-subtitle">${this.title}</h3>
               <div class="menu__item-descr">${this.descr}</div>
@@ -180,9 +189,8 @@ const tabs=document.querySelectorAll('.tabheader__item'),
               <div class="menu__item-price">
                   <div class="menu__item-cost">Цена:</div>
                   <div class="menu__item-total"><span>${this.price}</span> грн/день</div>
-              </div>
-          </div>`;
-            this.parentSelector.append(element);
+              </div>`;
+            this.parent.append(element);
             }
 
           }
@@ -196,17 +204,21 @@ const tabs=document.querySelectorAll('.tabheader__item'),
              Продукт активных и здоровых людей.
              Это абсолютно новый продукт с оптимальной ценой и высоким качеством!`,
             9,
-            '.menu .container'
-          ).render();
+            '.menu .container',
+            //'menu__item', /* передаем без точки так как эти данные потом запишутся в массив */
+            'big'
+          ).render(); // короткий способ создания элземпляров класса
 
           new MenuCard(
             "img/tabs/elite.jpg",
             "elite",
             'Меню “Премиум”',
             `В меню “Премиум” мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд. 
-            Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан  только у нас для вас!`,
+            Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан!`,
             11,
-            '.menu .container'
+            '.menu .container',
+            //'menu__item',
+            //'big'
           ).render();
 
           new MenuCard(
@@ -217,7 +229,9 @@ const tabs=document.querySelectorAll('.tabheader__item'),
              полное отсутствие продуктов животного происхождения, молоко из миндаля, овса, кокоса или гречки, 
              правильное количество белков за счет тофу и импортных вегетарианских стейков.`,
             14,
-            '.menu .container'
+            '.menu .container',
+            //'menu__item',
+            //'big'
           ).render();
 
           
