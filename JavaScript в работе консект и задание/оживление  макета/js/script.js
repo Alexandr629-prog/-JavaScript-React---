@@ -239,8 +239,7 @@ const tabs=document.querySelectorAll('.tabheader__item'),
 
 
 
-          
-          
+                  
 
 });
 
