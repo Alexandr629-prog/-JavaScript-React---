@@ -101,20 +101,23 @@ const tabs=document.querySelectorAll('.tabheader__item'),
 
           // Modal
           const modalTrigger = document.querySelectorAll('[data-modal]'),
-                modal =document.querySelector('.modal'),
-                modalCloseBtn = document.querySelector('[data-close');
+                modal =document.querySelector('.modal');
+              
 
           function openModal(){
-            modal.classList.toggle('show');
-              // modal.classList.add('show');
-              // modal.classList.remove('hide');
-              document.body.style.overflow = 'hidden';//страницу нельзя будет скрроллить
-              clearInterval(modalTimerId); // если сам открыл, то нужно сбросить таймер
+            modal.classList.add('show');
+            modal.classList.remove('hide');
+            document.body.style.overflow = 'hidden';
+            clearInterval(modalTimerId);
+
+            // modal.classList.toggle('show'); лучше использовать первый вариант!!!
+            // document.body.style.overflow = 'hidden';//страницу нельзя будет скрроллить
+            // clearInterval(modalTimerId); // если сам открыл, то нужно сбросить таймер
           }
           function closeModal(){
-            modal.classList.toggle('show');
-            // modal.classList.add('hide');
-            // modal.classList.remove('show');
+            //modal.classList.toggle('show');
+             modal.classList.add('hide');
+             modal.classList.remove('show');
             document.body.style.overflow = ''; // браузер сам разберется)
           }
 
@@ -122,11 +125,10 @@ const tabs=document.querySelectorAll('.tabheader__item'),
             item.addEventListener('click', openModal);
           });   
            
-          modalCloseBtn.addEventListener('click', closeModal);
             
 
           modal.addEventListener('click', (e) =>{
-            if(e.target === modal){
+            if(e.target === modal || e.target.getAttribute('data-close')==''){//в новом окне крестик будет работать
              closeModal();
             }
           });
@@ -140,7 +142,7 @@ const tabs=document.querySelectorAll('.tabheader__item'),
           
           // modification modal
 
-          const modalTimerId = setTimeout(openModal, 5000000); 
+          const modalTimerId = setTimeout(openModal, 40000); 
 
           function showModalbyscroll(){
             // сколько сверху отлистал пользователь + высота последнего экрана>=
@@ -234,71 +236,89 @@ const tabs=document.querySelectorAll('.tabheader__item'),
 
         //lesson 53 Реализация скрипта для отправки данных на сервер
 
-        // Forms
-        const forms = document.querySelectorAll('form');
+         // Forms
 
-        const message = {
-          loading: 'загрузка',
-          success: 'спасибо скоро мы с вами свяжемся',
-          failure: 'что-то пошло не так'
-        };
+    const forms = document.querySelectorAll('form');
+    const message = {
+        loading: 'img/form/spinner.svg',
+        success: 'Спасибо! Скоро мы с вами свяжемся',
+        failure: 'Что-то пошло не так...'
+    };
 
-        forms.forEach(item =>{
-          postData(item);
-        });
-        
-        function postData(form){
-          form.addEventListener('submit', (e)=>{
-            e.preventDefault();//отмена стандартного действия браузера
+    forms.forEach(item => {
+        postData(item);
+    });
 
-            const statusMessage = document.createElement('div');
-            statusMessage.classList.add('status');
-            statusMessage.textContent = message.loading;
-            form.append(statusMessage);
+    function postData(form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
 
+            const statusMessage = document.createElement('img');
+            statusMessage.src =message.loading;
+            statusMessage.alt = 'spinner';
+            statusMessage.style.cssText=`/* создание inline стилей */
+            display: block;
+            margin: 0 auto;
+            `;
+            //form.append(statusMessage);
+           form.insertAdjacentElement('afterend', statusMessage);//после конца формы
+            
             const request = new XMLHttpRequest();
             request.open('POST', 'server.php');
-            //когда использоуем связку xmlhttprequest+form-data не нужно устанавливать заголовок 
-            //он ставится автоматически!!!!!!!!!
-            request.setRequestHeader('content-type', 'application/json');
-            const formData = new FormData(form);//некий объект на нижнем уровне которого содержатся данные с наших форм
-            
-            //console.log(formData);
+            request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+            const formData = new FormData(form);
 
-            const object ={};
-            formData.forEach(function(value, key){ //создание копии formdata
-              object[key] = value;
+            const object = {};
+            formData.forEach(function(value, key){
+                object[key] = value;
             });
-            //console.log(object);
-            const json =JSON.stringify(object);//перегоняем в формат json
+            const json = JSON.stringify(object);
 
-            request.send(json);// отправка запроса на сервер
+            request.send(json);// отправляем на сервер
 
-            request.addEventListener('load', () =>{
-              if(request.status===200){
-                console.log(request.response);//данные которые отправились на сервер
-                statusMessage.textContent = message.success;
-                form.reset();
-                setTimeout(() => {
-                  statusMessage.remove();
-                }, 2000);
-              }else{
-                console.log(request.status);
-                statusMessage.textContent = message.failure;
-              }
+            request.addEventListener('load', () => {
+                if (request.status === 200) {
+                    console.log(request.response);
+                    showThanksModal(message.success);
+                     statusMessage.remove();
+                    form.reset();
+                } else {
+                    showThanksModal(message.failure);
+                }
             });
+        });
+    }
 
-          });
-        }
-          
-  
+    //lesson 54 красиове оповещение пользователя
 
+    function showThanksModal(message) {
+      const prevModalDialog = document.querySelector('.modal__dialog');
 
+      prevModalDialog.classList.add('hide');
+      openModal();      
 
+      const thanksModal = document.createElement('div');
+      thanksModal.classList.add('modal__dialog');
+      thanksModal.innerHTML = `
+          <div class="modal__content">
+              <div class="modal__close" data-close>×</div>
+              <div class="modal__title">${message}</div>
+          </div>
+      `;
+      document.querySelector('.modal').append(thanksModal);
+     
+      setTimeout(() => {
+          thanksModal.remove();
+          prevModalDialog.classList.add('show');
+          prevModalDialog.classList.remove('hide');
+          closeModal();
+      }, 4000);
+    }
+});
 
                   
 
-});
+
 
 
 
