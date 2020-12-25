@@ -263,29 +263,35 @@ const tabs=document.querySelectorAll('.tabheader__item'),
             //form.append(statusMessage);
            form.insertAdjacentElement('afterend', statusMessage);//после конца формы
             
-            const request = new XMLHttpRequest();
-            request.open('POST', 'server.php');
-            request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-            const formData = new FormData(form);
+           const formData = new FormData(form);//получение данных с формы
 
             const object = {};
             formData.forEach(function(value, key){
                 object[key] = value;
             });
-            const json = JSON.stringify(object);
+           
+           
 
-            request.send(json);// отправляем на сервер
-
-            request.addEventListener('load', () => {
-                if (request.status === 200) {
-                    console.log(request.response);
-                    showThanksModal(message.success);
-                     statusMessage.remove();
-                    form.reset();
-                } else {
-                    showThanksModal(message.failure);
-                }
-            });
+            fetch('server.php',{//если Promise попадает на ошибку связанную с http проттоколом то он НЕ выкинет reject
+              // он норм выполнит rejoct, reject будет возникать при сбое сети или если что-то помешало запросу вып-ся
+              //(offline)
+              method: "POST",
+              headers:  {
+                'content-type': 'application/json'
+              },
+              body: JSON.stringify(object)
+            })
+            .then(data => data.text())//модификация ответа, чтобы точно понимать что приходит от сервера
+            .then(data =>{
+                  console.log(data);
+                  showThanksModal(message.success);
+                  statusMessage.remove();
+                  form.reset();
+            }).catch(()=>{
+              showThanksModal(message.failure);
+            }).finally(()=>{
+              form.reset();
+            }); 
         });
     }
 
@@ -314,7 +320,26 @@ const tabs=document.querySelectorAll('.tabheader__item'),
           closeModal();
       }, 4000);
     }
+
+    // lesson 56 Fetch API
+
+    //API-интерфейс программного обеспечения(готовые методы и свойства которые мы можем юзать)
+    //DOM API -методы которые позволят работат со страницей
+    //google maps API -возможность работать с картами google
+
+    // fetch('https://jsonplaceholder.typicode.com/posts', {
+    //   method: "POST",
+    //   body: JSON.stringify({name: 'Alex'}),
+    //   headers: {
+    //     'content-type': 'application/json'
+    //   }
+    // })//в этой строчке возвражается Promise
+    //     .then(data => data.json())
+    //     .then(data => console.log(data));
+
 });
+
+
 
                   
 
