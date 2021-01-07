@@ -321,6 +321,11 @@ const tabs=document.querySelectorAll('.tabheader__item'),
       }, 4000);
     }
 
+    fetch('  http://localhost:3000/menu')
+        .then(data=>data.json())
+        .then(res =>console.log(res));
+
+
     // lesson 56 Fetch API
 
     //API-интерфейс программного обеспечения(готовые методы и свойства которые мы можем юзать)
