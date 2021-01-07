@@ -107,7 +107,7 @@ const tabs=document.querySelectorAll('.tabheader__item'),
           function openModal(){
             modal.classList.add('show');
             modal.classList.remove('hide');
-            document.body.style.overflow = 'hidden';
+            document.body.style.overflow = 'hidden';//запрет на скролл
             clearInterval(modalTimerId);
 
             // modal.classList.toggle('show'); лучше использовать первый вариант!!!
@@ -178,8 +178,9 @@ const tabs=document.querySelectorAll('.tabheader__item'),
               if(this.classes.length === 0 || this.classes[0]!='menu__item'){ /* провепряем длинну массива, ибо даже если мы ничего не передали вернется пустой массив */
                 this.element = 'menu__item';
                 element.classList.add(this.element);
-              }
+              }else{
               this.classes.forEach(className => element.classList.add(className));
+              }
               
               element.innerHTML =  `
               <img src=${this.src} alt=${this.alt}>
@@ -273,7 +274,7 @@ const tabs=document.querySelectorAll('.tabheader__item'),
            
 
             fetch('server.php',{//если Promise попадает на ошибку связанную с http проттоколом то он НЕ выкинет reject
-              // он норм выполнит rejoct, reject будет возникать при сбое сети или если что-то помешало запросу вып-ся
+              // он норм выполнит resolve, reject будет возникать при сбое сети или если что-то помешало запросу вып-ся
               //(offline)
               method: "POST",
               headers:  {
@@ -286,7 +287,6 @@ const tabs=document.querySelectorAll('.tabheader__item'),
                   console.log(data);
                   showThanksModal(message.success);
                   statusMessage.remove();
-                  form.reset();
             }).catch(()=>{
               showThanksModal(message.failure);
             }).finally(()=>{

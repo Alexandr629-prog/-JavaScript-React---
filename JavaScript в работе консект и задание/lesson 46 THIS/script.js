@@ -17,7 +17,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
 // showThis(4, 5);
 
 // 2
-// const obj = {
+// const bj = {
 //     a: 20,
 //     b: 15,
 //     sum: function(){
@@ -28,7 +28,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
 //     }
 // };
 
-// obj.sum();
+// bj.sum();
 
 // 3
 // function User(name, id){
@@ -69,17 +69,17 @@ const btn = document.querySelector('button');
 //     this.style.backgroundColor = 'red';
 // });
 
-// btn.addEventListener('click', ()=>{//  втаком случае this равно event.target
+// btn.addEventListener('click', ()=>{//  втаком случае this не равно event.target
 
-//     //console.log(this);// вроде как даже в строгом режиме вернет window
+//     console.log(this);// вроде как даже в строгом режиме вернет window
 //     this.style.backgroundColor = 'red';// не покрасит нопку, так как контекст потерялся
 // });
 
-btn.addEventListener('click', (e)=>{//  втаком случае this равно event.target
+// btn.addEventListener('click', (e)=>{//  втаком случае this не равно event.target
 
-    //console.log(this);// вроде как даже в строгом режиме вернет window
-    e.target.style.backgroundColor = 'red';// не покрасит нопку, так как контекст потерялся
-});
+//     console.log(this);// вроде как даже в строгом режиме вернет window
+//     e.target.style.backgroundColor = 'red';// не покрасит нопку, так как контекст потерялся
+// });
 
 
 const obj = {

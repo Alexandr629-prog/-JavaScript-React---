@@ -2,46 +2,46 @@
 
 //promise -обещания(если произошло что-то ты обещаем что у нас выполнится след действие)
 
-// console.log('запрос данных');
+console.log('запрос данных');
 
-// const req = new Promise(function(resolve, reject){
-// //resolve - что-то выполнилось
-// //reject - что-то пошло не так
-//     setTimeout(() => {
-//         console.log('подготовка данных...');
+const req = new Promise(function(resolve, reject){
+//resolve - что-то выполнилось
+//reject - что-то пошло не так
+    setTimeout(() => {
+        console.log('подготовка данных...');
     
-//         const product ={
-//             name: 'tv',
-//             price: 2000
-//         };
+        const product ={
+            name: 'tv',
+            price: 2000
+        };
     
-//         resolve(product);
+        resolve(product);
         
-//     },2000);
+    },2000);
 
-// });
+});
 
-// req.then((product)=>{//метод для обработки положительного результата
-//     return new Promise((resolve, reject)=>{
-//         setTimeout(() => {
-//             product.status = 'order';
-//             resolve(product);
-//         }, 2000);
-//     });
-// }).then(data =>{
-//     data.modify = 'true';
-//     return data;
+req.then((product)=>{//метод для обработки положительного результата
+    return new Promise((resolve, reject)=>{
+        setTimeout(() => {
+            product.status = 'order';
+            resolve(product);
+        }, 2000);
+    });
+}).then(data =>{
+    data.modify = 'true';
+    return data;
     
 
-// }).then((data)=>{
-//     console.log(data);
-// }).catch(()=>{
-//     console.error("произошла ошибка");// если сработал reject сразу перемтимся в catch
-// }).finally(()=>{//используется в конце, обозначает действия которые должны быть произведены при любом Promise
-//     //например не важно как выполнился запрос нам нужно очс=истить форму от старых данных
-//     // т.е. form.reset() помещается в блок finally
-//     console.log('finally');
-// });
+}).then((data)=>{
+    console.log(data);
+}).catch(()=>{
+    console.error("произошла ошибка");// если сработал reject сразу перемтимся в catch
+}).finally(()=>{//используется в конце, обозначает действия которые должны быть произведены при любом Promise
+    //например не важно как выполнился запрос нам нужно очс=истить форму от старых данных
+    // т.е. form.reset() помещается в блок finally
+    console.log('finally');
+});
 //ошибку можем получить когда ссылаемся на несуществующий файл, сервер упал...
 // такие операции обрабатываются с помощью reject
 
