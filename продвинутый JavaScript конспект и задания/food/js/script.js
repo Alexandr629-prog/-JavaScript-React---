@@ -197,7 +197,7 @@ const tabs=document.querySelectorAll('.tabheader__item'),
           }
 
           const getResource = async (url)=>{
-            const res = await fetch(url);
+            const res = await fetch(url); 
 
             if(!res.ok){
              throw new Error(`Could not fetch ${url}, status: ${res.status}`); //объект ошибки
@@ -205,13 +205,21 @@ const tabs=document.querySelectorAll('.tabheader__item'),
             return await res.json();//это Promies
           };
 
-          getResource('http://localhost:3000/menu')
-              .then(data=>{
-                data.forEach(({img, altimg, title, descr, price}) =>{
+          // getResource('http://localhost:3000/menu')
+          //     .then(data=>{
+          //       data.forEach(({img, altimg, title, descr, price}) =>{
+          //         console.log(img, altimg, title, descr, price);
+          //         new MenuCard(img, altimg, title, descr, price, '.menu .container').render();
+          //       });
+          //     });
+
+          axios.get('http://localhost:3000/menu')
+            .then(data =>{
+                data.data.forEach(({img, altimg, title, descr, price}) =>{
+                  console.log(img, altimg, title, descr, price);
                   new MenuCard(img, altimg, title, descr, price, '.menu .container').render();
                 });
               });
-
           // getResource('http://localhost:3000/menu')
           // .then(data =>createCard(data));
 
@@ -278,6 +286,7 @@ const tabs=document.querySelectorAll('.tabheader__item'),
            form.insertAdjacentElement('afterend', statusMessage);//после конца формы
             
            const formData = new FormData(form);//получение данных с формы
+           //console.log(Object.fromEntries(formData.entries())); вернет объект
            const json =JSON.stringify(Object.fromEntries(formData.entries()));//перевод данных с формы в json
            
             postData('http://localhost:3000/requests', json)
