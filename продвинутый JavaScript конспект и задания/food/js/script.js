@@ -216,7 +216,6 @@ const tabs=document.querySelectorAll('.tabheader__item'),
           axios.get('http://localhost:3000/menu')
             .then(data =>{
                 data.data.forEach(({img, altimg, title, descr, price}) =>{
-                  console.log(img, altimg, title, descr, price);
                   new MenuCard(img, altimg, title, descr, price, '.menu .container').render();
                 });
               });
@@ -348,6 +347,107 @@ const tabs=document.querySelectorAll('.tabheader__item'),
     // })//в этой строчке возвражается Promise
     //     .then(data => data.json())
     //     .then(data => console.log(data));
+
+
+    //  mi slider 
+
+    // const previosPicture =document.querySelector('.offer__slider-prev'),
+    //       nextPicture = document.querySelector('.offer__slider-next'),
+    //       counterPicture = document.querySelector('#current'),
+    //       totalPicture = document.querySelector('#total'),
+    //       slidePicture = document.querySelectorAll('.offer__slide');
+
+    //   function hideSlideContent(){
+    //     slidePicture.forEach(item =>{
+    //     item.classList.add('hide');// скрываем блоки на сайте
+    //     item.classList.remove('show', 'fade');
+    //     });
+
+    //   }
+    //     function showSlideContent(i = 0){// если функция вызывается без аргумента, то автоматически подставится 0
+    //       slidePicture[i].classList.add('show', 'fade');
+    //       slidePicture[i].classList.remove('hide');
+          
+    //     }
+
+    //     hideSlideContent();
+    //     showSlideContent();
+    //     counterPicture.innerHTML='01';
+
+    //     previosPicture.addEventListener('click', ()=>{
+    //       counterPicture.innerHTML--;
+    //       counterPicture.innerHTML=`0${counterPicture.innerHTML}`;
+    //       changeSlideContent();
+    //     });
+    //     nextPicture.addEventListener('click',()=>{
+    //       counterPicture.innerHTML++;
+    //       counterPicture.innerHTML=`0${counterPicture.innerHTML}`;
+    //       changeSlideContent();
+    //     });
+
+    //     function changeSlideContent(){
+    //       if(counterPicture.innerHTML>4){
+    //         counterPicture.innerHTML=`01`;
+    //       }
+    //       if(counterPicture.innerHTML<1){
+    //         counterPicture.innerHTML=`04`;
+    //       }
+    //       slidePicture.forEach((item, i) =>{
+    //         if(counterPicture.innerHTML==i+1){
+    //           hideSlideContent();
+    //           showSlideContent(i);
+              
+    //         }
+    //       });
+    //     }
+
+    let slideIndex = 1;
+    const slides = document.querySelectorAll('.offer__slide'),
+        prev = document.querySelector('.offer__slider-prev'),
+        next = document.querySelector('.offer__slider-next'),
+        total = document.querySelector('#total'),
+        current = document.querySelector('#current');
+
+    showSlides(slideIndex);
+
+    if (slides.length < 10) {
+        total.textContent = `0${slides.length}`;
+    } else {
+        total.textContent = slides.length;
+    }
+
+    function showSlides(n) {
+        if (n > slides.length) {
+            slideIndex = 1;
+        }
+        if (n < 1) {
+            slideIndex = slides.length;
+        }
+
+        slides.forEach((item) => item.classList.add('hide'));
+
+        slides[slideIndex - 1].classList.add('show');
+        slides[slideIndex - 1].classList.remove('hide');
+        
+        if (slides.length < 10) {
+            current.textContent =  `0${slideIndex}`;
+        } else {
+            current.textContent =  slideIndex;
+        }
+    }
+
+    function plusSlides (n) {
+        showSlides(slideIndex += n);
+    }
+
+    prev.addEventListener('click', function(){
+        plusSlides(-1);
+    });
+
+    next.addEventListener('click', function(){
+        plusSlides(1);
+    });
+
 
 });
 
