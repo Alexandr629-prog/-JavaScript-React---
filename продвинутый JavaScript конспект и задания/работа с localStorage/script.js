@@ -21,13 +21,17 @@ if(localStorage.getItem('bg') === 'changed'){
 
 
 checkbox.addEventListener('change', () =>{
-        localStorage.setItem('isChecked', true);
+        if(checkbox.checked ==true){
+            localStorage.setItem('isChecked', true);
+        }else{
+            localStorage.removeItem('isChecked');
+        }
+        
 });
 
 change.addEventListener('click', ()=>{
 
     if(localStorage.getItem('bg') === 'changed'){
-        console.log('sa');
         localStorage.removeItem('bg');
         form.style.background = '#fff';
 
