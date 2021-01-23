@@ -1,4 +1,13 @@
 
+import tabs from  './modules/tabs';
+import modal from './modules/modal';
+import timer from './modules/timer';
+import cards from './modules/cards';
+import calc  from './modules/calc';
+import forms from './modules/forms';
+import slider from './modules/slider';
+import {openModal} from './modules/modal';
+
 window.addEventListener('DOMContentLoaded', ()=>{
           // axios.get('http://localhost:3000/menu')
           //   .then(data =>{
@@ -44,21 +53,25 @@ window.addEventListener('DOMContentLoaded', ()=>{
     //DOM API -методы которые позволят работат со страницей
     //google maps API -возможность работать с картами google
 
-    const tabs = require('./modules/tabs'),
-          modal = require('./modules/modal'),
-          timer = require('./modules/timer'),
-          cards = require('./modules/cards'),
-          calc  = require('./modules/calc'),
-          forms = require('./modules/forms'),
-          slider = require('./modules/slider');
+    const modalTimerId = setTimeout(() => openModal('.modal', modalTimerId), 4000); 
 
-    tabs();
-    modal();
-    timer();
+    tabs('.tabheader__item', '.tabcontent', '.tabheader__items', 'tabheader__item_active');
+    modal('[data-modal]', '.modal', modalTimerId);
+    timer('.timer', '2021-01-30');
     cards();
     calc();
-    forms();
-    slider();
+    forms('form', modalTimerId);
+    slider({
+        container: '.offer__slider',
+        nextArrow: '.offer__slider-next',
+        prevArrow: '.offer__slider-prev',
+        slide: '.offer__slide',
+        totalCounter: '#total',
+        currentCounter: '#current',
+        wrapper: '.offer__slider-wrapper',
+        field: '.offer__slider-inner'
+
+    });
 
 });
 
