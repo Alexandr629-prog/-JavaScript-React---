@@ -1,6 +1,6 @@
 'use strict';
 
-// function* generetor(){
+// function* generator(){
 //     yield 'S';
 //     yield 'c';
 //     yield 'r';
@@ -9,7 +9,7 @@
 //     yield 't';
 // }
 
-// const str =generetor();
+// const str =generator();
 
 // console.log(str.next().value);
 
