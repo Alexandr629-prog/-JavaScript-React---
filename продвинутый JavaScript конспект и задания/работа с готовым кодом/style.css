@@ -1,0 +1,4 @@
+#tns1 > .tns-item + .tns-slide-active{
+    width: 500px;
+    height: 150px;  
+}
